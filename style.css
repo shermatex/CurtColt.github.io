@@ -48,7 +48,7 @@ header.hero .overlay {
     border: 6px solid #ff9800;
     margin: 0 auto 1.5rem;
     background-image: url("profile.png.png");
-    background-size: cover;
+    background-size: 480;
     background-position: center -30px;
     background-repeat: no-repeat;
     box-shadow: 0 0 15px rgba(0,0,0,0.6);
