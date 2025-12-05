@@ -42,8 +42,8 @@ header.hero .overlay {
 
 /* Profile image circle */
 .profile-photo {
-    width: 180px;
-    height: 180px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: 6px solid #ff9800;
     margin: 0 auto 1.5rem;
