@@ -41,7 +41,7 @@ header.hero .overlay {
 }
 
 .profile-photo {
-       background-image: url("profile.png.png");
+       background-image: url("profile.png");
     background-size: 80;
     background-position: Left -30px;
     background-repeat: no-repeat;
