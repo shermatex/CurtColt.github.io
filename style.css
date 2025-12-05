@@ -40,14 +40,6 @@ header.hero .overlay {
     box-sizing: border-box;
 }
 
-.profile-photo {
-       background-image: url("profile.png");
-    background-size: 80;
-    background-position: Left -30px;
-    background-repeat: no-repeat;
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
-}
-
 }
 
 .button {
