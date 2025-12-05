@@ -104,3 +104,16 @@ footer {
     padding: 1rem;
     color: #777;
 }
+/* Profile image circle */
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 6px solid #ff9800; /* orange ring */
+    margin: 0 auto 1.5rem;
+    background-image: url("profile.png?v=3");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
