@@ -31,7 +31,7 @@ header.hero {
 header.hero .overlay {
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.60);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,13 +40,28 @@ header.hero .overlay {
     box-sizing: border-box;
 }
 
-.profile {
-    width: 150px;
-    height: 150px;
+/* Profile image circle */
+.profile-photo {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    border: 4px solid #ff8800;
-    object-fit: cover;
-    margin-bottom: 1rem;
+    border: 6px solid #ff9800;
+    background-image: url("https://shermatex.github.io/CurtColt.github.io/profile.png?v=5");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .button {
@@ -67,12 +82,13 @@ section {
 section h2 {
     margin-top: 0;
     color: #ff8800;
+    font-size: 2rem;
 }
 
 /* Video embed styles */
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     margin-top: 1rem;
@@ -87,33 +103,11 @@ section h2 {
     border: none;
 }
 
-/* Links list */
-.links {
-    list-style: none;
-    padding: 0;
-}
-
-.links li {
-    margin: 0.5rem 0;
-}
-
 /* Footer */
 footer {
     background-color: #121212;
     text-align: center;
     padding: 1rem;
     color: #777;
-}
-/* Profile image circle */
-.profile-photo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 6px solid #ff9800; /* orange ring */
-    margin: 0 auto 1.5rem;
-    background-image: url("profile.png?v=3");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    font-size: 0.9rem;
 }
