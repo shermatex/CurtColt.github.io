@@ -22,18 +22,19 @@
 
 
 
-<!-- Sneak Peek section with thumbnail-triggered audio (placed between Hero and Listen Now) -->
+
+
+<!-- Sneak Peek section with image-triggered audio -->
 <section class="sneak-peek" aria-labelledby="sneak-title">
-  <h2 id="sneak-title">Sneak Peek: “The Devil Made Me Do It”</h2>
+  <h2 id="sneak-title" style="color:#ff7f27;">Sneak Peek: “The Devil Made Me Do It”</h2>
   <p class="sneak-caption">Click the cover to play/pause the preview.</p>
 
   <figure class="sneak-card">
-    <!-- Thumbnail cover image (acts as trigger) -->
+    <!-- Thumbnail image (click to play/pause) -->
     <img
-      id="sneakPeekThumb"
-      src="Raw_And_Uncut_Image.png"
-     button
-      id="playOverlay"
+      id="sneakThumb"
+      src="raw-and-uncut-cover-image.png"
+      alt="Raw and Uncut     id="sneakOverlay"
       class="play-overlay"
       type="button"
       aria-label="Play preview"
@@ -41,13 +42,106 @@
     >►</button>
   </figure>
 
-  <!-- Audio element -->
+  <!-- Hidden audio element -->
   <audio id="sneakAudio" preload="metadata">
-    <source src="The_Devil_Made_Me_Do_It.mp3" typeoes not support the audio element.
+    <source src="The_Devil_MadeMe_Do_It.mp3" type="audio/mpegort the audio element.
   </audio>
-</section>
-``
 
+  <!-- Minimal styles for just this section -->
+  <style>
+    .sneak-peek {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    .sneak-caption {
+      margin: 0.25rem 0 1rem;
+      font-size: 0.95rem;
+      color: #ccc; /* adjust to your theme */
+    }
+    .sneak-card {
+      position: relative;
+      display: inline-block;
+      max-width: 420px;
+      width: 100%;
+    }
+    .sneak-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+      cursor: pointer;
+    }
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      border: none;
+      border-radius: 12px;
+      background: radial-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0));
+      color: #fff;
+      font-size: 64px;
+      line-height: 1;
+      opacity: 0.92;
+      cursor: pointer;
+      transition: opacity 160ms ease-in-out;
+    }
+    .play-overlay.playing {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+
+  <!-- Script for play/pause behavior (runs after the elements exist) -->
+  <script>
+    (function () {
+      const audio   = document.getElementById('sneakAudio');
+      const thumb   = document.getElementById('sneakThumb');
+      const overlay = document.getElementById('sneakOverlay');
+
+      if (!audio || !thumb) {
+        console.warn('Sneak Peek: Missing #sneakAudio or #sneakThumb.');
+        return;
+      }
+
+      function setOverlayState(isPlaying) {
+        if (!overlay) return;
+        overlay.classList.toggle('playing', isPlaying);
+        overlay.textContent = isPlaying ? '❚❚' : '►';
+        overlay.setAttribute('aria-label', isPlaying ? 'Pause preview' : 'Play preview');
+        overlay.setAttribute('title', isPlaying ? 'Pause preview' : 'Play preview');
+      }
+
+      function togglePlayback() {
+        if (audio.paused) {
+          audio.play().then(() => setOverlayState(true)).catch(err => {
+            console.warn('Playback blocked or failed:', err);
+          });
+        } else {
+          audio.pause();
+          setOverlayState(false);
+        }
+      }
+
+      // Click the image or overlay to toggle playback
+      thumb.addEventListener('click', togglePlayback);
+      if (overlay) overlay.addEventListener('click', togglePlayback);
+
+      // Reset overlay when track ends
+      audio.addEventListener('ended', () => setOverlayState(false));
+
+      // Optional: pause if tab hidden
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && !audio.paused) {
+          audio.pause();
+          setOverlayState(false);
+               }
+      });
+    })();
+  </script>
 
 
     
