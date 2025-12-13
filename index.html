@@ -26,118 +26,98 @@ i<!DOCTYPE html>
   <p class="sneak-caption">Click the cover to play/pause the preview.</p>
 
   <figure class="sneak-card">
-    <!-- Thumbnail image (click to play/pause) -->
-    <img
-      id="sneakThumb"
-      src="Raw_and_Uncut_Cover_Image.png"
-      alt="Raw and Uncut     id="sneakOverlay"
-      class="play-overlay"
-      type="button"
-      aria-label="Play preview"
-      title="Play preview"
-    >►</button>
+    <button id="sneakBtn" class="sneak-btn" type="button" aria-label="Play preview" title="Play preview">
+      <img
+        id="sneakThumb"
+        src="./Raw_and_Uncut_Cover_Image.png"
+        alt="Raw and Uncut cover"
+      />
+      <span id="sneakOverlay" class="play-overlay" aria-hidden="true">►</span>
+    </button>
   </figure>
 
-  <!-- Hidden audio element -->
-  <audio id="sneakAudio" preload="metadata">
-    <source src="TheDevilMadeMeDoIt.mp3" type="audio/mpegort the audio element.
+  <audio id="sneakAudio" preload="metadata" playsinline>
+    <source src="./TheDevilMadeMeDoIt.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
 
-  <!-- Minimal styles for just this section -->
   <style>
-    .sneak-peek {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    .sneak-caption {
-      margin: 0.25rem 0 1rem;
-      font-size: 0.95rem;
-      color: #ccc; /* adjust to your theme */
-    }
-    .sneak-card {
+    .sneak-peek { max-width: 600px; margin: 0 auto; padding: 2rem 1rem; text-align: center; }
+    .sneak-caption { margin: 0.25rem 0 1rem; font-size: 0.95rem; color: #ccc; }
+
+    .sneak-card { display: inline-block; max-width: 420px; width: 100%; margin: 0; }
+    .sneak-btn {
       position: relative;
-      display: inline-block;
-      max-width: 420px;
+      display: block;
       width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
     }
-    .sneak-card img {
+    .sneak-btn img {
       display: block;
       width: 100%;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 12px 28px rgba(0,0,0,0.25);
-      cursor: pointer;
     }
     .play-overlay {
       position: absolute;
       inset: 0;
       display: grid;
       place-items: center;
-      border: none;
       border-radius: 12px;
       background: radial-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0));
       color: #fff;
       font-size: 64px;
       line-height: 1;
       opacity: 0.92;
-      cursor: pointer;
       transition: opacity 160ms ease-in-out;
-    }
-    .play-overlay.playing {
-      opacity: 0;
       pointer-events: none;
     }
+    .play-overlay.playing { opacity: 0; }
   </style>
 
-  <!-- Script for play/pause behavior (runs after the elements exist) -->
   <script>
     (function () {
       const audio   = document.getElementById('sneakAudio');
-      const thumb   = document.getElementById('sneakThumb');
+      const btn     = document.getElementById('sneakBtn');
       const overlay = document.getElementById('sneakOverlay');
 
-      if (!audio || !thumb) {
-        console.warn('Sneak Peek: Missing #sneakAudio or #sneakThumb.');
+      if (!audio || !btn || !overlay) {
+        console.warn('Sneak Peek: missing elements.');
         return;
       }
 
-      function setOverlayState(isPlaying) {
-        if (!overlay) return;
+      function setOverlay(isPlaying) {
         overlay.classList.toggle('playing', isPlaying);
         overlay.textContent = isPlaying ? '❚❚' : '►';
-        overlay.setAttribute('aria-label', isPlaying ? 'Pause preview' : 'Play preview');
-        overlay.setAttribute('title', isPlaying ? 'Pause preview' : 'Play preview');
+        btn.setAttribute('aria-label', isPlaying ? 'Pause preview' : 'Play preview');
+        btn.setAttribute('title', isPlaying ? 'Pause preview' : 'Play preview');
       }
 
-      function togglePlayback() {
-        if (audio.paused) {
-          audio.play().then(() => setOverlayState(true)).catch(err => {
-            console.warn('Playback blocked or failed:', err);
-          });
-        } else {
-          audio.pause();
-          setOverlayState(false);
+      async function togglePlayback() {
+        try {
+          if (audio.paused) {
+            await audio.play();   // must be triggered by user click (this is)
+            setOverlay(true);
+          } else {
+            audio.pause();
+            setOverlay(false);
+          }
+        } catch (err) {
+          console.warn('Playback blocked/failed:', err);
+          // If this fires, it’s usually a path/404 or MIME-type issue.
         }
       }
 
-      // Click the image or overlay to toggle playback
-      thumb.addEventListener('click', togglePlayback);
-      if (overlay) overlay.addEventListener('click', togglePlayback);
-
-      // Reset overlay when track ends
-      audio.addEventListener('ended', () => setOverlayState(false));
-
-      // Optional: pause if tab hidden
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden && !audio.paused) {
-          audio.pause();
-          setOverlayState(false);
-               }
-      });
+      btn.addEventListener('click', togglePlayback);
+      audio.addEventListener('ended', () => setOverlay(false));
     })();
   </script>
+</section>
+
 
 
     
