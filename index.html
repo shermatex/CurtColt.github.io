@@ -23,30 +23,102 @@ i<!DOCTYPE html>
     
 <!-- Sneak Peek section with image-triggered audio -->
 <section class="sneak-peek" aria-labelledby="sneak-title">
-  <h2 id="sneak-title" style="color:#ff7f27;">Limited Time Only: “I'll Be Home For Christmas”</h2>
-  <p class="sneak-caption">Click the cover to play/pause the preview.</p>
+  <h2 id="sneak-title" style="color:#ff7f27;">Sneak Peeks</h2>
+  <p class="sneak-caption">Click a cover to play/pause its preview.</p>
 
-  <figure class="sneak-card">
-    <button id="sneakBtn" class="sneak-btn" type="button" aria-label="Play preview" title="Play preview">
-      <img
-        id="sneakThumb"
-        src="./CurtColtChristmas.png"
-        alt="Raw and Uncut cover"
-      />
-      <span id="sneakOverlay" class="play-overlay" aria-hidden="true">►</span>
-    </button>
-  </figure>
+  <div class="sneak-grid">
 
-  <audio id="sneakAudio" preload="metadata" playsinline>
-    <source src="./IllBeHomeForChristmas.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+    <!-- Card 1: I'll Be Home For Christmas -->
+    <figure class="sneak-card">
+      <button
+        class="sneak-btn"
+        type="button"
+        data-audio="#audio-christmas"
+        aria-label="Play I'll Be Home For Christmas preview"
+        title="Play I'll Be Home For Christmas preview"
+      >
+        <img
+          src="./CurtColtChristmas.png"
+          alt="I'll Be Home For Christmas cover art"
+        />
+        <span class="play-overlay" aria-hidden="true">►</span>
+      </button>
+
+      <figcaption class="sneak-title">I'll Be Home For Christmas</figcaption>
+
+      <audio id="audio-christmas" preload="metadata" playsinline>
+        <source src="./IllBeHomeForChristmas.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </figure>
+
+    <!-- Card 2: The Devil Made Me Do It -->
+    <figure class="sneak-card">
+      <button
+        class="sneak-btn"
+        type="button"
+        data-audio="#audio-devil"
+        aria-label="Play The Devil Made Me Do It preview"
+        title="Play The Devil Made Me Do It preview"
+      >
+        <img
+          src="./Raw_and_Uncut_Cover_Image.png"
+          alt="Raw and Uncut cover art for The Devil Made Me Do It"
+        />
+        <span class="play-overlay" aria-hidden="true">►</span>
+      </button>
+
+      <figcaption class="sneak-title">The Devil Made Me Do It</figcaption>
+
+      <audio id="audio-devil" preload="metadata" playsinline>
+        <source src="./TheDevilMadeMeDoIt.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </figure>
+
+  </div>
 
   <style>
-    .sneak-peek { max-width: 600px; margin: 0 auto; padding: 2rem 1rem; text-align: center; }
-    .sneak-caption { margin: 0.25rem 0 1rem; font-size: 0.95rem; color: #ccc; }
+    .sneak-peek {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
 
-    .sneak-card { display: inline-block; max-width: 420px; width: 100%; margin: 0; }
+    .sneak-caption {
+      margin: 0.25rem 0 1rem;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .sneak-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      justify-items: center;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .sneak-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sneak-card {
+      width: 100%;
+      max-width: 420px;
+      margin: 0;
+    }
+
+    .sneak-title {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #eee;
+      letter-spacing: 0.4px;
+    }
+
     .sneak-btn {
       position: relative;
       display: block;
@@ -56,20 +128,25 @@ i<!DOCTYPE html>
       background: transparent;
       cursor: pointer;
     }
+
     .sneak-btn img {
       display: block;
       width: 100%;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
     }
+
     .play-overlay {
       position: absolute;
       inset: 0;
       display: grid;
       place-items: center;
       border-radius: 12px;
-      background: radial-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0));
+      background: radial-gradient(
+        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0)
+      );
       color: #fff;
       font-size: 64px;
       line-height: 1;
@@ -77,47 +154,73 @@ i<!DOCTYPE html>
       transition: opacity 160ms ease-in-out;
       pointer-events: none;
     }
-    .play-overlay.playing { opacity: 0; }
+
+    .play-overlay.playing {
+      opacity: 0;
+    }
   </style>
 
   <script>
     (function () {
-      const audio   = document.getElementById('sneakAudio');
-      const btn     = document.getElementById('sneakBtn');
-      const overlay = document.getElementById('sneakOverlay');
+      const buttons = document.querySelectorAll('.sneak-btn');
 
-      if (!audio || !btn || !overlay) {
-        console.warn('Sneak Peek: missing elements.');
-        return;
-      }
-
-      function setOverlay(isPlaying) {
-        overlay.classList.toggle('playing', isPlaying);
-        overlay.textContent = isPlaying ? '❚❚' : '►';
-        btn.setAttribute('aria-label', isPlaying ? 'Pause preview' : 'Play preview');
-        btn.setAttribute('title', isPlaying ? 'Pause preview' : 'Play preview');
-      }
-
-      async function togglePlayback() {
-        try {
-          if (audio.paused) {
-            await audio.play();   // must be triggered by user click (this is)
-            setOverlay(true);
-          } else {
+      function pauseAllExcept(activeAudio) {
+        document.querySelectorAll('audio').forEach(audio => {
+          if (audio !== activeAudio) {
             audio.pause();
-            setOverlay(false);
           }
-        } catch (err) {
-          console.warn('Playback blocked/failed:', err);
-          // If this fires, it’s usually a path/404 or MIME-type issue.
-        }
+        });
       }
 
-      btn.addEventListener('click', togglePlayback);
-      audio.addEventListener('ended', () => setOverlay(false));
+      function syncUI() {
+        buttons.forEach(btn => {
+          const overlay = btn.querySelector('.play-overlay');
+          const audioSel = btn.getAttribute('data-audio');
+          const audio = document.querySelector(audioSel);
+          if (!overlay || !audio) return;
+
+          const isPlaying = !audio.paused;
+          overlay.classList.toggle('playing', isPlaying);
+          overlay.textContent = isPlaying ? '❚❚' : '►';
+          btn.setAttribute(
+            'aria-label',
+            isPlaying ? 'Pause preview' : 'Play preview'
+          );
+          btn.setAttribute(
+            'title',
+            isPlaying ? 'Pause preview' : 'Play preview'
+          );
+        });
+      }
+
+      buttons.forEach(btn => {
+        const audio = document.querySelector(btn.getAttribute('data-audio'));
+        if (!audio) return;
+
+        btn.addEventListener('click', async () => {
+          try {
+            if (audio.paused) {
+              pauseAllExcept(audio);
+              await audio.play();
+            } else {
+              audio.pause();
+            }
+            syncUI();
+          } catch (err) {
+            console.warn('Audio playback failed:', err);
+          }
+        });
+
+        audio.addEventListener('play', syncUI);
+        audio.addEventListener('pause', syncUI);
+        audio.addEventListener('ended', syncUI);
+      });
+
+      syncUI();
     })();
   </script>
 </section>
+
 
 
 
