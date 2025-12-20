@@ -1,261 +1,302 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curt Colt | Raw & Uncut Outlaw Country</title>
+  <meta name="description" content="Curt Colt — outlaw country with grit in the voice and truth in the lyrics. Hear exclusive sneak peeks, unlock hidden tracks, and meet the real Curt Colt." />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <!-- Hero section with background image and artist introduction -->
-    <header class="hero" style="background-image: url('hero.png');">
-        <div class="overlay">
-            <h3 style="font-family: 'TeX Gyre Schola';
-    src: url('/assets/fonts/texgyreschola-regular.otf') format('opentype'); font-size: 160px; color: #FFFFFF; text-shadow: 0px 16px 20px rgba(0,0,0,0.6);
-    margin: 0;">Curt Colt</h3>
+  <!-- HERO -->
+  <header class="hero" style="background-image: url('hero.png');">
+    <div class="hero__overlay">
+      <div class="hero__content">
+        <h1 class="hero__title">Curt Colt</h1>
+        <p class="hero__tagline">Outlaw country</p>
+        <p class="hero__subtag">Grit in the voice, truth in the lyrics</p>
 
-            <p>Outlaw country<p></p>
-                Grit in the voice, truth in the lyrics</p>
-            </div>
-    </header>
+        <div class="hero__cta">
+          <button class="btn btn--primary" type="button" data-jump="#raw" data-start="audio-runnin">
+            🔥 Raw &amp; Uncut
+          </button>
+          <button class="btn btn--ghost" type="button" data-jump="#holiday" data-start="audio-christmas">
+            🎄 Holiday (Limited Time)
+          </button>
+        </div>
 
-    
-    
-<!-- Sneak Peek section with image-triggered audio -->
-<section class="sneak-peek" aria-labelledby="sneak-title">
-  <h2 id="sneak-title" style="color:#ff7f27;">Sneak Peeks</h2>
-  <p class="sneak-caption">Click a cover to play/pause its preview.</p>
+        <p class="hero__hint">Pick a side to start listening. Unlock the second track when you’re ready.</p>
+      </div>
+    </div>
+  </header>
 
-  <div class="sneak-grid">
+  <main>
+    <!-- RAW & UNCUT (Progressive reveal) -->
+    <section id="raw" class="section">
+      <div class="section__head">
+        <h2 class="section__title">Raw &amp; Uncut</h2>
+        <p class="section__desc">No polish. No permission. Just the songs the way they were lived.</p>
+      </div>
 
-    <!-- Card 1: I'll Be Home For Christmas -->
-    <figure class="sneak-card">
-      <button
-        class="sneak-btn"
-        type="button"
-        data-audio="#audio-christmas"
-        aria-label="Play I'll Be Home For Christmas preview"
-        title="Play I'll Be Home For Christmas preview"
-      >
-        <img
-          src="./CurtColtChristmas.png"
-          alt="I'll Be Home For Christmas cover art"
-        />
-        <span class="play-overlay" aria-hidden="true">►</span>
-      </button>
+      <div class="cards">
+        <!-- Track 1: Runnin' For Nothing -->
+        <article class="card">
+          <div class="card__media">
+            <button class="cover-btn" type="button" data-audio="audio-runnin" aria-label="Play Runnin' For Nothing (Raw and Uncut)">
+              <img src="Curt_Performing_On_Stage.png" alt="Cover art for Runnin' For Nothing (Raw and Uncut)" />
+              <span class="cover-btn__overlay" aria-hidden="true">►</span>
+            </button>
+          </div>
 
-      <figcaption class="sneak-title">I'll Be Home For Christmas</figcaption>
+          <div class="card__body">
+            <h3 class="card__title">Runnin' For Nothing (Raw and Uncut)</h3>
+            <p class="card__meta">Raw &amp; Uncut • Sneak peek</p>
 
-      <audio id="audio-christmas" preload="metadata" playsinline>
-        <source src="./IllBeHomeForChristmas.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-    </figure>
+            <audio id="audio-runnin" preload="metadata" playsinline>
+              <source src="Runnin' For Nothing (Raw and Uncut).mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </article>
 
-    <!-- Card 2: The Devil Made Me Do It -->
-    <figure class="sneak-card">
-      <button
-        class="sneak-btn"
-        type="button"
-        data-audio="#audio-devil"
-        aria-label="Play The Devil Made Me Do It preview"
-        title="Play The Devil Made Me Do It preview"
-      >
-        <img
-          src="./Raw_and_Uncut_Cover_Image.png"
-          alt="Raw and Uncut cover art for The Devil Made Me Do It"
-        />
-        <span class="play-overlay" aria-hidden="true">►</span>
-      </button>
+        <!-- Hidden gem unlock -->
+        <div class="unlock">
+          <p class="unlock__text">There’s another one… but not everyone hears it.</p>
+          <button class="btn btn--secondary" type="button" id="unlock-devil">
+            Unlock a hidden track
+          </button>
+        </div>
 
-      <figcaption class="sneak-title">The Devil Made Me Do It</figcaption>
+        <!-- Track 2: The Devil Made Me Do It (hidden until unlocked) -->
+        <article class="card card--hidden" id="devil-card" aria-hidden="true">
+          <div class="card__media">
+            <button class="cover-btn" type="button" data-audio="audio-devil" aria-label="Play The Devil Made Me Do It">
+              <img src="Raw_and_Uncut_Cover_Image.png" alt="Cover art for The Devil Made Me Do It" />
+              <span class="cover-btn__overlay" aria-hidden="true">►</span>
+            </button>
+          </div>
 
-      <audio id="audio-devil" preload="metadata" playsinline>
-        <source src="./TheDevilMadeMeDoIt.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-    </figure>
+          <div class="card__body">
+            <h3 class="card__title">The Devil Made Me Do It</h3>
+            <p class="card__meta">Raw &amp; Uncut • Hidden track</p>
 
-  </div>
+            <audio id="audio-devil" preload="metadata" playsinline>
+              <source src="TheDevilMadeMeDoIt.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <style>
-    .sneak-peek {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
+    <!-- HOLIDAY (limited-time) -->
+    <section id="holiday" class="section section--alt">
+      <div class="section__head">
+        <h2 class="section__title">Holiday (Limited Time)</h2>
+        <p class="section__desc">This stays up through <strong>January 1</strong>. After that, it’s gone.</p>
+      </div>
 
-    .sneak-caption {
-      margin: 0.25rem 0 1rem;
-      font-size: 0.95rem;
-      color: #ccc;
-    }
+      <div class="cards">
+        <article class="card">
+          <div class="card__media">
+            <button class="cover-btn" type="button" data-audio="audio-christmas" aria-label="Play I'll Be Home For Christmas">
+              <img src="CurtColtChristmas.png" alt="Cover art for I'll Be Home For Christmas" />
+              <span class="cover-btn__overlay" aria-hidden="true">►</span>
+            </button>
+          </div>
 
-    .sneak-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      justify-items: center;
-      align-items: start;
-    }
+          <div class="card__body">
+            <h3 class="card__title">I'll Be Home For Christmas</h3>
+            <p class="card__meta">Limited-time release • Sneak peek</p>
 
-    @media (max-width: 720px) {
-      .sneak-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+            <audio id="audio-christmas" preload="metadata" playsinline>
+              <source src="IllBeHomeForChristmas.mp3" type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </article>
+      </div>
+    </section>
 
-    .sneak-card {
-      width: 100%;
-      max-width: 420px;
-      margin: 0;
-    }
+    <!-- THE REAL CURT COLT -->
+    <section id="real" class="section">
+      <div class="section__head">
+        <h2 class="section__title">The Real Curt Colt</h2>
+        <p class="section__desc">A real man. Real life. Same grit.</p>
+      </div>
 
-    .sneak-title {
-      margin-top: 10px;
-      font-size: 1rem;
-      color: #eee;
-      letter-spacing: 0.4px;
-    }
+      <div class="real-grid">
+        <figure class="real-card">
+          <img src="Curt_On_Horse.png" alt="Curt Colt on a horse" />
+          <figcaption>On the horse — where the mind gets quiet.</figcaption>
+        </figure>
 
-    .sneak-btn {
-      position: relative;
-      display: block;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-    }
+        <figure class="real-card">
+          <img src="Curt_And_Pup.png" alt="Curt Colt with his dog" />
+          <figcaption>With the pup — loyalty doesn’t need words.</figcaption>
+        </figure>
 
-    .sneak-btn img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-    }
+        <figure class="real-card">
+          <img src="Curt_Family_Man.png" alt="Curt Colt with his family" />
+          <figcaption>Family man — everything else comes second.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-    .play-overlay {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: radial-gradient(
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0)
-      );
-      color: #fff;
-      font-size: 64px;
-      line-height: 1;
-      opacity: 0.92;
-      transition: opacity 160ms ease-in-out;
-      pointer-events: none;
-    }
+    <!-- EMAIL CAPTURE (shows after engagement) -->
+    <section class="section section--alt" id="insider" hidden>
+      <div class="section__head">
+        <h2 class="section__title">Unreleased tracks</h2>
+        <p class="section__desc">Want unreleased Curt tracks before they drop? No spam. Just music.</p>
+      </div>
 
-    .play-overlay.playing {
-      opacity: 0;
-    }
-  </style>
+      <!-- NOTE: This is a placeholder form. Replace action="" with your provider (Mailchimp, ConvertKit, etc.). -->
+      <form class="email" action="" method="post">
+        <label class="sr-only" for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required />
+        <button class="btn btn--primary" type="submit">Get early access</button>
+      </form>
+
+      <p class="email__fineprint">We’ll only email when there’s something worth hearing.</p>
+    </section>
+
+    <!-- CONNECT (last = no early exits) -->
+    <section class="section">
+      <div class="section__head">
+        <h2 class="section__title">Connect</h2>
+        <p class="section__desc">Follow Curt Colt where you listen and hang out.</p>
+      </div>
+
+      <ul class="links">
+        <li><a href="https://www.instagram.com/colt_curt/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61584598382214" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        <li><a href="https://open.spotify.com/search/Curt%20Colt" target="_blank" rel="noopener noreferrer">Spotify</a></li>
+        <li><a href="https://music.apple.com/us/search?term=curt%20colt" target="_blank" rel="noopener noreferrer">Apple Music</a></li>
+        <li><a href="https://music.amazon.com/search/Curt+Colt?filter=IsLibrary%7Cfalse&sc=none" target="_blank" rel="noopener noreferrer">Amazon Music</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Curt Colt. All rights reserved.</p>
+  </footer>
 
   <script>
     (function () {
-      const buttons = document.querySelectorAll('.sneak-btn');
+      const allAudios = Array.from(document.querySelectorAll('audio'));
+      const coverButtons = Array.from(document.querySelectorAll('.cover-btn'));
+      const heroButtons = Array.from(document.querySelectorAll('[data-jump]'));
+      const insiderSection = document.getElementById('insider');
 
-      function pauseAllExcept(activeAudio) {
-        document.querySelectorAll('audio').forEach(audio => {
-          if (audio !== activeAudio) {
-            audio.pause();
-          }
+      const unlockBtn = document.getElementById('unlock-devil');
+      const devilCard = document.getElementById('devil-card');
+
+      let hasEngaged = false;
+
+      function pauseAllExcept(active) {
+        allAudios.forEach(a => {
+          if (a !== active) a.pause();
         });
       }
 
-      function syncUI() {
-        buttons.forEach(btn => {
-          const overlay = btn.querySelector('.play-overlay');
-          const audioSel = btn.getAttribute('data-audio');
-          const audio = document.querySelector(audioSel);
+      function getAudioById(id) {
+        return document.getElementById(id);
+      }
+
+      function showInsiderIfNeeded() {
+        if (hasEngaged && insiderSection && insiderSection.hasAttribute('hidden')) {
+          insiderSection.removeAttribute('hidden');
+        }
+      }
+
+      function syncCoverUI() {
+        coverButtons.forEach(btn => {
+          const overlay = btn.querySelector('.cover-btn__overlay');
+          const audioId = btn.getAttribute('data-audio');
+          const audio = getAudioById(audioId);
           if (!overlay || !audio) return;
 
-          const isPlaying = !audio.paused;
-          overlay.classList.toggle('playing', isPlaying);
-          overlay.textContent = isPlaying ? '❚❚' : '►';
-          btn.setAttribute(
-            'aria-label',
-            isPlaying ? 'Pause preview' : 'Play preview'
-          );
-          btn.setAttribute(
-            'title',
-            isPlaying ? 'Pause preview' : 'Play preview'
-          );
+          const playing = !audio.paused;
+          overlay.textContent = playing ? '❚❚' : '►';
+          btn.setAttribute('aria-label', playing ? 'Pause preview' : 'Play preview');
         });
       }
 
-      buttons.forEach(btn => {
-        const audio = document.querySelector(btn.getAttribute('data-audio'));
+      async function toggleAudio(audio) {
+        try {
+          if (audio.paused) {
+            pauseAllExcept(audio);
+            await audio.play();
+          } else {
+            audio.pause();
+          }
+        } catch (e) {
+          console.warn('Audio playback failed:', e);
+        } finally {
+          syncCoverUI();
+        }
+      }
+
+      // Hero buttons: jump + start track
+      heroButtons.forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const jump = btn.getAttribute('data-jump');
+          const startId = btn.getAttribute('data-start');
+
+          if (jump) {
+            document.querySelector(jump)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+
+          if (startId) {
+            const audio = getAudioById(startId);
+            if (audio) {
+              hasEngaged = true;
+              showInsiderIfNeeded();
+              await toggleAudio(audio);
+            }
+          }
+        });
+      });
+
+      // Cover buttons
+      coverButtons.forEach(btn => {
+        const audioId = btn.getAttribute('data-audio');
+        const audio = getAudioById(audioId);
         if (!audio) return;
 
         btn.addEventListener('click', async () => {
-          try {
-            if (audio.paused) {
-              pauseAllExcept(audio);
-              await audio.play();
-            } else {
-              audio.pause();
-            }
-            syncUI();
-          } catch (err) {
-            console.warn('Audio playback failed:', err);
-          }
+          hasEngaged = true;
+          showInsiderIfNeeded();
+          await toggleAudio(audio);
         });
 
-        audio.addEventListener('play', syncUI);
-        audio.addEventListener('pause', syncUI);
-        audio.addEventListener('ended', syncUI);
+        audio.addEventListener('play', () => {
+          hasEngaged = true;
+          showInsiderIfNeeded();
+          syncCoverUI();
+        });
+        audio.addEventListener('pause', syncCoverUI);
+        audio.addEventListener('ended', syncCoverUI);
       });
 
-      syncUI();
+      // Unlock hidden track
+      if (unlockBtn && devilCard) {
+        unlockBtn.addEventListener('click', () => {
+          devilCard.classList.remove('card--hidden');
+          devilCard.removeAttribute('aria-hidden');
+          unlockBtn.disabled = true;
+          unlockBtn.textContent = 'Hidden track unlocked';
+          hasEngaged = true;
+          showInsiderIfNeeded();
+
+          // Optional: scroll into view
+          devilCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+
+      syncCoverUI();
     })();
   </script>
-</section>
-
-
-
-
-    
-    <!-- Music section with a YouTube embed -->
-    <section class="music">
-        <h2>Listen Now</h2>
-        <p>Music made for the misfits and late‑night drifters.</p>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/hacGxABKV84?start=0" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <!-- About section describing the artist -->
-    <section class="about">
-        <h2>About Curt Colt</h2>
-        <p>Curt Colt is a gritty outlaw country artist blending stories of freedom and rebellion with a soulful voice and raw guitar. His music captures the spirit of the open road and the late‑night drifter.</p>
-    </section>
-
-    <!-- Connect section with links to social and streaming platforms -->
-    <section class="connect">
-        <h2>Connect</h2>
-        <p>Follow Curt Colt on social media and your favorite streaming platforms:</p>
-        <ul class="links">
-            <li><a href="https://www.instagram.com/colt_curt/" target="_blank">Instagram</a></li>
-            <li><a href="https://open.spotify.com/search/Curt%20Colt" target="_blank">Spotify</a></li>
-            <li><a href="https://music.apple.com/us/search?term=curt%20colt" target="_blank">Apple Music</a></li>
-            <li><a href="https://music.amazon.com/search/Curt+Colt?filter=IsLibrary%7Cfalse&sc=none" target="_blank">Amazon Music</a></li>
-            <li><a href="https://www.facebook.com/profile.php?id=61584598382214" target="_blank">Facebook</a></li>
-        </ul>
-    </section>
-
-    <!-- Simple footer -->
-    <footer>
-        <p>&copy; 2025 Curt Colt. All rights reserved.</p>
-    </footer>
 </body>
 </html>
