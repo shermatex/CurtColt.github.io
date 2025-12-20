@@ -161,14 +161,14 @@
       <p class="email__fineprint">We’ll only email when there’s something worth hearing.</p>
     </section>
 
-    <!-- CONNECT (last = no early exits) -->
+    <!-- CONNECT (Kaeldon-style buttons across) -->
     <section class="section">
       <div class="section__head">
         <h2 class="section__title">Connect</h2>
         <p class="section__desc">Follow Curt Colt where you listen and hang out.</p>
       </div>
 
-      <ul class="links">
+      <ul class="social-buttons">
         <li><a href="https://www.instagram.com/colt_curt/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61584598382214" target="_blank" rel="noopener noreferrer">Facebook</a></li>
         <li><a href="https://open.spotify.com/search/Curt%20Colt" target="_blank" rel="noopener noreferrer">Spotify</a></li>
@@ -200,103 +200,4 @@
         });
       }
 
-      function getAudioById(id) {
-        return document.getElementById(id);
-      }
-
-      function showInsiderIfNeeded() {
-        if (hasEngaged && insiderSection && insiderSection.hasAttribute('hidden')) {
-          insiderSection.removeAttribute('hidden');
-        }
-      }
-
-      function syncCoverUI() {
-        coverButtons.forEach(btn => {
-          const overlay = btn.querySelector('.cover-btn__overlay');
-          const audioId = btn.getAttribute('data-audio');
-          const audio = getAudioById(audioId);
-          if (!overlay || !audio) return;
-
-          const playing = !audio.paused;
-          overlay.textContent = playing ? '❚❚' : '►';
-          btn.setAttribute('aria-label', playing ? 'Pause preview' : 'Play preview');
-        });
-      }
-
-      async function toggleAudio(audio) {
-        try {
-          if (audio.paused) {
-            pauseAllExcept(audio);
-            await audio.play();
-          } else {
-            audio.pause();
-          }
-        } catch (e) {
-          console.warn('Audio playback failed:', e);
-        } finally {
-          syncCoverUI();
-        }
-      }
-
-      // Hero buttons: jump + start track
-      heroButtons.forEach(btn => {
-        btn.addEventListener('click', async () => {
-          const jump = btn.getAttribute('data-jump');
-          const startId = btn.getAttribute('data-start');
-
-          if (jump) {
-            document.querySelector(jump)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-
-          if (startId) {
-            const audio = getAudioById(startId);
-            if (audio) {
-              hasEngaged = true;
-              showInsiderIfNeeded();
-              await toggleAudio(audio);
-            }
-          }
-        });
-      });
-
-      // Cover buttons
-      coverButtons.forEach(btn => {
-        const audioId = btn.getAttribute('data-audio');
-        const audio = getAudioById(audioId);
-        if (!audio) return;
-
-        btn.addEventListener('click', async () => {
-          hasEngaged = true;
-          showInsiderIfNeeded();
-          await toggleAudio(audio);
-        });
-
-        audio.addEventListener('play', () => {
-          hasEngaged = true;
-          showInsiderIfNeeded();
-          syncCoverUI();
-        });
-        audio.addEventListener('pause', syncCoverUI);
-        audio.addEventListener('ended', syncCoverUI);
-      });
-
-      // Unlock hidden track
-      if (unlockBtn && devilCard) {
-        unlockBtn.addEventListener('click', () => {
-          devilCard.classList.remove('card--hidden');
-          devilCard.removeAttribute('aria-hidden');
-          unlockBtn.disabled = true;
-          unlockBtn.textContent = 'Hidden track unlocked';
-          hasEngaged = true;
-          showInsiderIfNeeded();
-
-          // Optional: scroll into view
-          devilCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-      }
-
-      syncCoverUI();
-    })();
-  </script>
-</body>
-</html>
+      function get
