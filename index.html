@@ -1,30 +1,51 @@
-i<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>   </title>
+    <title>Curt Colt | Outlaw Country Music</title>
+    <meta name="description" content="Curt Colt brings outlaw country grit with raw vocals, honest lyrics, and late-night drift. Listen to sneak peeks, watch the latest video, and follow Curt Colt.">
+    <meta property="og:title" content="Curt Colt | Outlaw Country Music">
+    <meta property="og:description" content="Grit in the voice, truth in the lyrics. Listen to Curt Colt's sneak peeks and latest video.">
+    <meta property="og:image" content="hero.png">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="site-nav">
+        <span class="brand">Curt Colt</span>
+        <div class="nav-links">
+            <a href="#sneak-peek">Sneak Peeks</a>
+            <a href="#music">Listen</a>
+            <a href="#about">About</a>
+            <a href="#connect">Connect</a>
+        </div>
+    </nav>
     <!-- Hero section with background image and artist introduction -->
     <header class="hero" style="background-image: url('hero.png');">
         <div class="overlay">
-            <h3 style="font-family: 'TeX Gyre Schola';
-    src: url('/assets/fonts/texgyreschola-regular.otf') format('opentype'); font-size: 160px; color: #FFFFFF; text-shadow: 0px 16px 20px rgba(0,0,0,0.6);
-    margin: 0;">Curt Colt</h3>
-
-            <p>Outlaw country<p></p>
-                Grit in the voice, truth in the lyrics</p>
+            <div class="hero-content">
+                <p class="hero-eyebrow">Outlaw country</p>
+                <h1 class="hero-title">Curt Colt</h1>
+                <p class="hero-subtitle">Grit in the voice, truth in the lyrics. New music built for late-night drifters.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#music">Listen now</a>
+                    <a class="btn ghost" href="#connect">Follow Curt</a>
+                </div>
+            </div>
             </div>
     </header>
 
     
     
 <!-- Sneak Peek section with image-triggered audio -->
-<section class="sneak-peek" aria-labelledby="sneak-title">
-  <h2 id="sneak-title" style="color:#ff7f27;">Sneak Peeks</h2>
-  <p class="sneak-caption">Click a cover to play/pause its preview.</p>
+<main id="main">
+<section id="sneak-peek" class="sneak-peek" aria-labelledby="sneak-title">
+  <div class="section-header">
+    <h2 id="sneak-title">Sneak Peeks</h2>
+    <p class="sneak-caption">Tap a cover to play or pause each preview.</p>
+  </div>
 
   <div class="sneak-grid">
 
@@ -77,88 +98,6 @@ i<!DOCTYPE html>
     </figure>
 
   </div>
-
-  <style>
-    .sneak-peek {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    .sneak-caption {
-      margin: 0.25rem 0 1rem;
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-
-    .sneak-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      justify-items: center;
-      align-items: start;
-    }
-
-    @media (max-width: 720px) {
-      .sneak-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .sneak-card {
-      width: 100%;
-      max-width: 420px;
-      margin: 0;
-    }
-
-    .sneak-title {
-      margin-top: 10px;
-      font-size: 1rem;
-      color: #eee;
-      letter-spacing: 0.4px;
-    }
-
-    .sneak-btn {
-      position: relative;
-      display: block;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .sneak-btn img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-    }
-
-    .play-overlay {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: radial-gradient(
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0)
-      );
-      color: #fff;
-      font-size: 64px;
-      line-height: 1;
-      opacity: 0.92;
-      transition: opacity 160ms ease-in-out;
-      pointer-events: none;
-    }
-
-    .play-overlay.playing {
-      opacity: 0;
-    }
-  </style>
 
   <script>
     (function () {
@@ -226,34 +165,56 @@ i<!DOCTYPE html>
 
     
     <!-- Music section with a YouTube embed -->
-    <section class="music">
-        <h2>Listen Now</h2>
-        <p>Music made for the misfits and late‑night drifters.</p>
+    <section id="music" class="music section-alt">
+        <div class="section-header">
+            <h2>Listen Now</h2>
+            <p>Music made for the misfits and late‑night drifters.</p>
+        </div>
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/hacGxABKV84?start=0" frameborder="0" allowfullscreen></iframe>
         </div>
     </section>
 
     <!-- About section describing the artist -->
-    <section class="about">
-        <h2>About Curt Colt</h2>
-        <p>Curt Colt is a gritty outlaw country artist blending stories of freedom and rebellion with a soulful voice and raw guitar. His music captures the spirit of the open road and the late‑night drifter.</p>
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2>About Curt Colt</h2>
+            <p>Curt Colt is a gritty outlaw country artist blending stories of freedom and rebellion with a soulful voice and raw guitar. His music captures the spirit of the open road and the late‑night drifter.</p>
+        </div>
+        <div class="about-grid">
+            <div>
+                <h3>Sound & Story</h3>
+                <p>From dive bars to desert highways, Curt Colt brings a raw storytelling edge with a voice that feels like gravel and thunder.</p>
+            </div>
+            <div>
+                <h3>New Releases</h3>
+                <p>Hit play on the sneak peeks to hear new tracks early and stay tuned for the next drop.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Connect section with links to social and streaming platforms -->
-    <section class="connect">
-        <h2>Connect</h2>
-        <p>Follow Curt Colt on social media and your favorite streaming platforms:</p>
+    <section id="connect" class="connect section-alt">
+        <div class="section-header">
+            <h2>Connect</h2>
+            <p>Follow Curt Colt on social media and your favorite streaming platforms:</p>
+        </div>
         <ul class="links">
-            <li><a href="https://www.instagram.com/colt_curt/" target="_blank">Instagram</a></li>
-            <li><a href="https://open.spotify.com/search/Curt%20Colt" target="_blank">Spotify</a></li>
-            <li><a href="https://music.apple.com/us/search?term=curt%20colt" target="_blank">Apple Music</a></li>
-            <li><a href="https://music.amazon.com/search/Curt+Colt?filter=IsLibrary%7Cfalse&sc=none" target="_blank">Amazon Music</a></li>
-            <li><a href="https://www.facebook.com/profile.php?id=61584598382214" target="_blank">Facebook</a></li>
+            <li><a href="https://www.instagram.com/colt_curt/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://open.spotify.com/search/Curt%20Colt" target="_blank" rel="noopener">Spotify</a></li>
+            <li><a href="https://music.apple.com/us/search?term=curt%20colt" target="_blank" rel="noopener">Apple Music</a></li>
+            <li><a href="https://music.amazon.com/search/Curt+Colt?filter=IsLibrary%7Cfalse&sc=none" target="_blank" rel="noopener">Amazon Music</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61584598382214" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
+        <div class="cta-card">
+            <h3>Stay in the loop</h3>
+            <p>Get first access to new singles, live dates, and behind-the-scenes stories.</p>
+            <a class="btn primary" href="mailto:booking@curtcoltmusic.com?subject=Curt%20Colt%20Updates">Get updates</a>
+        </div>
     </section>
 
     <!-- Simple footer -->
+</main>
     <footer>
         <p>&copy; 2025 Curt Colt. All rights reserved.</p>
     </footer>
