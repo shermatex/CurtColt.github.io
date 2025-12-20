@@ -200,4 +200,103 @@
         });
       }
 
-      function get
+      function getAudioById(id) {
+        return document.getElementById(id);
+      }
+
+      function showInsiderIfNeeded() {
+        if (hasEngaged && insiderSection && insiderSection.hasAttribute('hidden')) {
+          insiderSection.removeAttribute('hidden');
+        }
+      }
+
+      function syncCoverUI() {
+        coverButtons.forEach(btn => {
+          const overlay = btn.querySelector('.cover-btn__overlay');
+          const audioId = btn.getAttribute('data-audio');
+          const audio = getAudioById(audioId);
+          if (!overlay || !audio) return;
+
+          const playing = !audio.paused;
+          overlay.textContent = playing ? '❚❚' : '►';
+          btn.setAttribute('aria-label', playing ? 'Pause preview' : 'Play preview');
+          btn.setAttribute('title', playing ? 'Pause preview' : 'Play preview');
+        });
+      }
+
+      async function toggleAudio(audio) {
+        try {
+          if (audio.paused) {
+            pauseAllExcept(audio);
+            await audio.play();
+          } else {
+            audio.pause();
+          }
+        } catch (e) {
+          console.warn('Audio playback failed:', e);
+        } finally {
+          syncCoverUI();
+        }
+      }
+
+      // Hero buttons: jump + start track
+      heroButtons.forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const jump = btn.getAttribute('data-jump');
+          const startId = btn.getAttribute('data-start');
+
+          if (jump) {
+            document.querySelector(jump)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+
+          if (startId) {
+            const audio = getAudioById(startId);
+            if (audio) {
+              hasEngaged = true;
+              showInsiderIfNeeded();
+              await toggleAudio(audio);
+            }
+          }
+        });
+      });
+
+      // Cover buttons
+      coverButtons.forEach(btn => {
+        const audioId = btn.getAttribute('data-audio');
+        const audio = getAudioById(audioId);
+        if (!audio) return;
+
+        btn.addEventListener('click', async () => {
+          hasEngaged = true;
+          showInsiderIfNeeded();
+          await toggleAudio(audio);
+        });
+
+        audio.addEventListener('play', () => {
+          hasEngaged = true;
+          showInsiderIfNeeded();
+          syncCoverUI();
+        });
+        audio.addEventListener('pause', syncCoverUI);
+        audio.addEventListener('ended', syncCoverUI);
+      });
+
+      // Unlock hidden track
+      if (unlockBtn && devilCard) {
+        unlockBtn.addEventListener('click', () => {
+          devilCard.classList.remove('card--hidden');
+          devilCard.removeAttribute('aria-hidden');
+          unlockBtn.disabled = true;
+          unlockBtn.textContent = 'Hidden track unlocked';
+          hasEngaged = true;
+          showInsiderIfNeeded();
+
+          devilCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+
+      syncCoverUI();
+    })();
+  </script>
+</body>
+</html>
