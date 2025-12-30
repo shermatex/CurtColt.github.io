@@ -479,6 +479,68 @@ audio{
   }
 }
 
+
+/* =========================
+   Connect / Social Pills
+========================= */
+
+.social{
+  max-width: var(--max);
+  margin: 1.25rem auto 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.social li{ margin: 0; }
+
+.social a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.45rem;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+
+  color: var(--text);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.22);
+
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 120ms ease;
+}
+
+.social a:hover{
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.38);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.social a:active{
+  transform: translateY(0);
+}
+
+.social a:focus-visible{
+  outline: 3px solid rgba(255,138,31,0.55);
+  outline-offset: 3px;
+}
+
+/* Mobile: make them easier to tap */
+@media (max-width: 520px){
+  .social a{
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+
 /* =========================
    Footer
 ========================= */
