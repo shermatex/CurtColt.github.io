@@ -9,9 +9,11 @@
   --muted: rgba(255,255,255,0.74);
   --muted-2: rgba(255,255,255,0.60);
   --accent: #ff8a1f;
+
   --card: rgba(255,255,255,0.05);
   --border: rgba(255,255,255,0.12);
   --shadow: 0 18px 44px rgba(0,0,0,0.40);
+
   --radius: 16px;
   --max: 1100px;
 }
@@ -55,10 +57,23 @@ a:hover{ text-decoration: underline; }
   place-items: center;
 }
 
+/* Mobile portrait & general mobile */
 @media (max-width: 900px){
   .hero{
     background-image: url("hero_2_mobile.png");
     background-position: center;
+    min-height: 78vh;
+  }
+}
+
+/* 🔥 Mobile LANDSCAPE fix: stop chopping heads
+   - Most phones in landscape have short viewport height
+   - Pull focal point UP (try 35% first; if still cropped, go 30% or 25%)
+*/
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 520px){
+  .hero{
+    min-height: 92vh;
+    background-position: center 35%;
   }
 }
 
@@ -82,7 +97,7 @@ a:hover{ text-decoration: underline; }
   align-items: end;
 }
 
-/* Brand (Left side feel) */
+/* Brand on left */
 .hero__brand{
   justify-self: start;
   padding-left: 0.25rem;
@@ -95,7 +110,7 @@ a:hover{ text-decoration: underline; }
   text-shadow: 0 18px 30px rgba(0,0,0,0.65);
 }
 
-/* Hero “radio buttons” */
+/* Hero nav pills */
 .hero__nav{
   justify-self: center;
   display: flex;
@@ -105,7 +120,6 @@ a:hover{ text-decoration: underline; }
   padding: 0.25rem 0;
 }
 
-/* Pill buttons */
 .pill{
   appearance: none;
   border: 1px solid rgba(255,255,255,0.28);
@@ -264,7 +278,7 @@ a:hover{ text-decoration: underline; }
   font-size: 0.95rem;
 }
 
-/* Hide default audio UI (keeps it clean) */
+/* Hide default audio UI (clean look) */
 audio{
   width: 100%;
   max-width: 520px;
@@ -272,52 +286,19 @@ audio{
 }
 
 /* =========================
-   Meet Curt Colt
-========================= */
-
-/* =========================
-   Meet Curt Colt – Tight Horizontal Layout
+   Meet Curt Colt (3-up desktop, stacked mobile)
 ========================= */
 
 .meet{
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   align-items: stretch;
 }
 
-/* Force consistent image height */
-.meet__card img{
-  width: 100%;
-  height: 260px;            /* <- THIS is the key */
-  object-fit: cover;        /* crops instead of stretching */
-}
-
-/* Tighter caption spacing */
-.meet__card figcaption{
-  padding: 0.9rem 1rem 1.1rem;
-}
-
-/* Slightly smaller caption text so 3 fit clean */
-.meet__card p{
-  font-size: 1rem;
-  line-height: 1.45;
-}
-
-/* Mobile fallback */
-@media (max-width: 980px){
-  .meet{
-    grid-template-columns: 1fr;
-  }
-
-  .meet__card img{
-    height: auto; /* natural height on mobile */
-  }
-}
-
-
+/* If your desktop gets tight, drop to 2 columns sooner */
 @media (max-width: 980px){
   .meet{
     grid-template-columns: 1fr;
@@ -331,11 +312,22 @@ audio{
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
+/* Key: keep images visually consistent on desktop */
 .meet__card img{
   width: 100%;
-  height: auto;
+  height: 260px;
+  object-fit: cover;
+}
+
+/* On mobile, let images breathe naturally */
+@media (max-width: 980px){
+  .meet__card img{
+    height: auto;
+  }
 }
 
 .meet__card figcaption{
@@ -346,7 +338,7 @@ audio{
 .meet__card h3{
   margin: 0 0 0.55rem;
   color: rgba(255,255,255,0.92);
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   letter-spacing: 0.2px;
 }
 
@@ -354,7 +346,7 @@ audio{
   margin: 0;
   color: rgba(255,255,255,0.78);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   line-height: 1.5;
 }
 
@@ -420,4 +412,55 @@ audio{
 .artist-link__cta{
   margin-top: 0.35rem;
   display: inline-block;
-  font-weight:
+  font-weight: 850;
+  letter-spacing: 0.25px;
+  color: rgba(255,255,255,0.92);
+}
+
+/* =========================
+   Social Buttons (bottom row)
+========================= */
+
+.socials{
+  max-width: var(--max);
+  margin: 1.25rem auto 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.socials li{ margin: 0; }
+
+.socials a{
+  display: inline-block;
+  padding: 0.75rem 1.45rem;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: var(--text);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.22);
+  transition: background 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+
+.socials a:hover{
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* =========================
+   Footer
+========================= */
+
+.footer{
+  background: #0b0b0b;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  color: rgba(255,255,255,0.55);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
