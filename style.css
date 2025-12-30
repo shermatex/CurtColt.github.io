@@ -1,185 +1,159 @@
 /* =========================
-   Curt Colt — Revamp 2026-ready
+   Base
 ========================= */
 
 :root{
-  --bg: #0f0f0f;
-  --bg-alt: #0b0b0b;
-  --text: #f4f4f4;
-  --muted: rgba(255,255,255,0.72);
-  --muted-2: rgba(255,255,255,0.58);
-
-  /* Country + sunrise accent */
+  --bg: #121212;
+  --bg-alt: #0d0d0d;
+  --text: #f3f3f3;
+  --muted: rgba(255,255,255,0.74);
+  --muted-2: rgba(255,255,255,0.60);
   --accent: #ff8a1f;
-  --accent-2: #ffb25a;
-
-  --card: rgba(255,255,255,0.04);
-  --card-border: rgba(255,255,255,0.10);
-  --shadow: 0 18px 44px rgba(0,0,0,0.45);
-
+  --card: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.12);
+  --shadow: 0 18px 44px rgba(0,0,0,0.40);
   --radius: 16px;
-  --wrap: 1100px;
+  --max: 1100px;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+*{ box-sizing: border-box; }
+
+html, body{ height: 100%; }
 
 body{
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
-  background: var(--bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+  line-height: 1.6;
   color: var(--text);
-  line-height: 1.55;
+  background: var(--bg);
 }
 
 img{
-  max-width: 100%;
-  height: auto;
   display: block;
+  width: 100%;
+  height: auto;
 }
 
 a{
-  color: inherit;
+  color: var(--accent);
   text-decoration: none;
 }
 
-.wrap{
-  width: min(var(--wrap), calc(100% - 2rem));
-  margin: 0 auto;
-}
+a:hover{ text-decoration: underline; }
 
 /* =========================
    Hero
 ========================= */
 
 .hero{
-  min-height: 86vh;
   position: relative;
+  min-height: 82vh;
   background-image: url("hero_2.png");
   background-size: cover;
   background-position: center;
   display: grid;
+  place-items: center;
 }
 
-@media (max-width: 820px){
+@media (max-width: 900px){
   .hero{
     background-image: url("hero_2_mobile.png");
     background-position: center;
-    min-height: 88vh;
   }
 }
 
 .hero__overlay{
-  position: relative;
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    180deg,
-    rgba(0,0,0,0.60) 0%,
-    rgba(0,0,0,0.62) 35%,
-    rgba(0,0,0,0.80) 100%
+    rgba(0,0,0,0.62),
+    rgba(0,0,0,0.72)
   );
+  display: grid;
+  place-items: end center;
+  padding: 2.25rem 1rem 2rem;
 }
 
-/* Brand left side */
+.hero__content{
+  width: 100%;
+  max-width: var(--max);
+  display: grid;
+  gap: 14px;
+  align-items: end;
+}
+
+/* Brand (Left side feel) */
 .hero__brand{
-  position: absolute;
-  left: clamp(16px, 5vw, 64px);
-  top: clamp(18px, 7vh, 80px);
-  max-width: 520px;
+  justify-self: start;
+  padding-left: 0.25rem;
 }
 
 .hero__title{
   margin: 0;
-  font-size: clamp(2.6rem, 6vw, 5.4rem);
-  letter-spacing: 0.6px;
-  text-transform: none;
-  text-shadow: 0 18px 34px rgba(0,0,0,0.55);
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  letter-spacing: 0.5px;
+  text-shadow: 0 18px 30px rgba(0,0,0,0.65);
 }
 
-.hero__tag{
-  margin: 0.35rem 0 0;
-  color: rgba(255,255,255,0.88);
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-}
-
-@media (max-width: 820px){
-  .hero__brand{
-    left: 16px;
-    right: 16px;
-    top: 22px;
-    max-width: none;
-  }
-  .hero__title{
-    font-size: clamp(2.2rem, 9vw, 4rem);
-  }
-}
-
-/* Nav pills at bottom of hero */
+/* Hero “radio buttons” */
 .hero__nav{
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: clamp(16px, 5vh, 44px);
+  justify-self: center;
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 0 1rem;
+  padding: 0.25rem 0;
 }
 
-/* =========================
-   Pills / “Radio button” look
-========================= */
-
+/* Pill buttons */
 .pill{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.78rem 1.25rem;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.24);
-  background: rgba(0,0,0,0.22);
-  backdrop-filter: blur(8px);
-  color: rgba(255,255,255,0.92);
+  padding: 0.85rem 1.25rem;
   font-weight: 800;
   letter-spacing: 0.2px;
-  transition: transform 130ms ease, background 160ms ease, border-color 160ms ease, filter 160ms ease;
+  cursor: pointer;
+  transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
 }
 
 .pill:hover{
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.40);
   transform: translateY(-1px);
-  background: rgba(0,0,0,0.30);
-  border-color: rgba(255,255,255,0.34);
-  filter: brightness(1.03);
 }
 
 .pill:active{ transform: translateY(0px); }
 
-.pill--soft{
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.18);
-}
-
 /* =========================
-   Statement (below hero)
+   Quote
 ========================= */
 
-.statement{
-  padding: 1.7rem 0 1.6rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  background: radial-gradient(900px 220px at 50% 0%, rgba(255,138,31,0.12), rgba(0,0,0,0));
+.quote{
+  padding: 2.25rem 1rem 1.75rem;
+  background: radial-gradient(circle at 30% 0%, rgba(255,138,31,0.14), rgba(0,0,0,0) 55%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.statement__text{
-  margin: 0;
+.quote__inner{
+  max-width: var(--max);
+  margin: 0 auto;
   text-align: center;
-  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
-  color: rgba(255,255,255,0.88);
+}
+
+.quote__text{
+  margin: 0;
+  font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+  color: rgba(255,255,255,0.90);
+  font-family: Georgia, "Times New Roman", serif;
   letter-spacing: 0.2px;
+}
+
+.quote__sig{
+  margin: 0.6rem 0 0;
+  color: var(--muted-2);
   font-weight: 700;
 }
 
@@ -188,264 +162,227 @@ a{
 ========================= */
 
 .section{
-  padding: 3.2rem 0;
+  padding: 3.25rem 1rem;
 }
 
 .section--alt{
   background: var(--bg-alt);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .section__head{
+  max-width: var(--max);
+  margin: 0 auto 1.75rem;
   text-align: center;
-  margin: 0 auto 1.8rem;
 }
 
 .section__title{
   margin: 0;
-  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
-  color: var(--accent-2);
+  color: var(--accent);
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
   letter-spacing: 0.2px;
 }
 
 .section__desc{
-  margin: 0.6rem auto 0;
-  max-width: 820px;
+  margin: 0.55rem auto 0;
+  max-width: 860px;
   color: var(--muted);
 }
 
 /* =========================
-   Tracks (Page 2)
+   Tracks (Listen Now)
 ========================= */
 
 .tracks{
+  max-width: var(--max);
+  margin: 0 auto;
   display: grid;
   gap: 16px;
-  margin-top: 1.2rem;
 }
 
-/* “Long list thumbnails” that still look good on desktop */
 .track{
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 16px;
-  padding: 14px;
   background: var(--card);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 190px 1fr;
   align-items: center;
 }
 
-@media (max-width: 820px){
+@media (max-width: 760px){
   .track{
     grid-template-columns: 1fr;
   }
 }
 
 .track__cover{
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  background: transparent;
   position: relative;
-  border-radius: 14px;
-  overflow: hidden;
+  border: 0;
+  padding: 14px;
+  background: transparent;
+  cursor: pointer;
 }
 
 .track__cover img{
-  width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
-  transform: scale(1.0);
-  transition: transform 170ms ease, filter 170ms ease;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.40);
 }
 
-.track__cover:hover img{
-  transform: scale(1.01);
-  filter: brightness(1.04);
-}
-
-.track__icon{
+.track__overlay{
   position: absolute;
-  inset: 0;
+  inset: 14px;
   display: grid;
   place-items: center;
-  font-size: 60px;
-  color: rgba(255,255,255,0.95);
-  text-shadow: 0 10px 30px rgba(0,0,0,0.65);
-  background: radial-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0));
+  border-radius: 12px;
+  background: radial-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0) 60%);
+  color: #fff;
+  font-size: 58px;
+  opacity: 0.92;
   pointer-events: none;
 }
 
-.track__meta{
-  padding: 0 6px;
+.track__body{
+  padding: 16px 18px 16px 0;
+}
+
+@media (max-width: 760px){
+  .track__body{
+    padding: 0 16px 18px;
+  }
 }
 
 .track__title{
-  margin: 0 0 4px;
-  font-size: 1.22rem;
+  margin: 0.4rem 0 0.25rem;
+  font-size: 1.15rem;
   letter-spacing: 0.2px;
 }
 
-.track__sub{
-  margin: 0;
-  color: var(--muted-2);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.7px;
-  font-size: 0.82rem;
+.track__meta{
+  margin: 0 0 0.6rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Hide default audio UI (keeps it clean) */
+audio{
+  width: 100%;
+  max-width: 520px;
+  display: none;
 }
 
 /* =========================
-   Meet Curt (Page 3)
+   Meet Curt Colt
 ========================= */
 
-.gallery{
+.meet{
+  max-width: var(--max);
+  margin: 0 auto;
   display: grid;
+  gap: 16px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 1.2rem;
 }
 
-@media (max-width: 900px){
-  .gallery{
+@media (max-width: 980px){
+  .meet{
     grid-template-columns: 1fr;
   }
 }
 
-.shot{
+.meet__card{
   margin: 0;
   background: var(--card);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
-.shot__img{
-  height: 240px;
-  background-size: cover;
-  background-position: center;
+.meet__card img{
+  width: 100%;
+  height: auto;
 }
 
-.shot__img--placeholder{
-  background-image: linear-gradient(135deg, rgba(255,138,31,0.16), rgba(255,255,255,0.03));
+.meet__card figcaption{
+  padding: 1.05rem 1.05rem 1.25rem;
+  text-align: center;
 }
 
-.shot__cap{
-  padding: 1rem 1rem 1.15rem;
-  color: rgba(255,255,255,0.82);
-  line-height: 1.45;
+.meet__card h3{
+  margin: 0 0 0.55rem;
+  color: rgba(255,255,255,0.92);
+  font-size: 1.15rem;
+  letter-spacing: 0.2px;
 }
 
-.shot__cap strong{
-  color: rgba(255,255,255,0.94);
+.meet__card p{
+  margin: 0;
+  color: rgba(255,255,255,0.78);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.5;
 }
 
 /* =========================
-   Other Artists (Page 4)
+   Other Artists (Kaeldon link)
 ========================= */
 
-.feature{
+.artist-link{
+  max-width: var(--max);
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 16px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0;
   border-radius: var(--radius);
   overflow: hidden;
+  border: 1px solid var(--border);
   background: var(--card);
-  border: 1px solid var(--card-border);
   box-shadow: var(--shadow);
-  transition: transform 160ms ease, border-color 160ms ease, filter 160ms ease;
-}
-
-.feature:hover{
-  transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.18);
-  filter: brightness(1.03);
+  text-decoration: none;
+  color: var(--text);
 }
 
 @media (max-width: 900px){
-  .feature{
+  .artist-link{
     grid-template-columns: 1fr;
   }
 }
 
-.feature__media{
-  min-height: 280px;
+.artist-link__media{
+  min-height: 320px;
   background-image: url("kaeldon_mobile_landscape_hero.png");
   background-size: cover;
   background-position: center;
 }
 
-@media (max-width: 700px){
-  .feature__media{
+@media (max-width: 900px){
+  .artist-link__media{
+    min-height: 360px;
     background-image: url("Kaeldon_Mobile_45_hero.png");
+    background-position: center;
   }
 }
 
-.feature__body{
-  padding: 1.2rem 1.2rem 1.25rem;
+.artist-link__body{
+  padding: 1.4rem 1.35rem 1.5rem;
   display: grid;
   align-content: center;
+  gap: 0.55rem;
 }
 
-.feature__title{
-  margin: 0 0 6px;
-  font-size: 1.4rem;
-  letter-spacing: 0.3px;
-  color: rgba(255,255,255,0.92);
+.artist-link__title{
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.65rem;
+  letter-spacing: 0.4px;
 }
 
-.feature__desc{
+.artist-link__desc{
   margin: 0;
   color: var(--muted);
 }
 
-.feature__cta{
-  margin-top: 0.9rem;
+.artist-link__cta{
+  margin-top: 0.35rem;
   display: inline-block;
-  color: var(--accent-2);
-  font-weight: 900;
-  letter-spacing: 0.3px;
-}
-
-/* =========================
-   Footer socials
-========================= */
-
-.footer{
-  padding: 1.6rem 0 2.2rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  background: #090909;
-}
-
-.footer__inner{
-  display: grid;
-  gap: 14px;
-  justify-items: center;
-}
-
-.social{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-}
-
-.footer__fineprint{
-  margin: 0;
-  color: rgba(255,255,255,0.45);
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  font-size: 0.92rem;
-}
-
-/* =========================
-   Accessibility + motion
-========================= */
-
-@media (prefers-reduced-motion: reduce){
-  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
-}
+  font-weight:
