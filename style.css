@@ -275,13 +275,48 @@ audio{
    Meet Curt Colt
 ========================= */
 
+/* =========================
+   Meet Curt Colt – Tight Horizontal Layout
+========================= */
+
 .meet{
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
 }
+
+/* Force consistent image height */
+.meet__card img{
+  width: 100%;
+  height: 260px;            /* <- THIS is the key */
+  object-fit: cover;        /* crops instead of stretching */
+}
+
+/* Tighter caption spacing */
+.meet__card figcaption{
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+/* Slightly smaller caption text so 3 fit clean */
+.meet__card p{
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+/* Mobile fallback */
+@media (max-width: 980px){
+  .meet{
+    grid-template-columns: 1fr;
+  }
+
+  .meet__card img{
+    height: auto; /* natural height on mobile */
+  }
+}
+
 
 @media (max-width: 980px){
   .meet{
