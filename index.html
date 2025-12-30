@@ -3,299 +3,364 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Curt Colt | Raw & Uncut Outlaw Country</title>
-  <meta name="description" content="Curt Colt — outlaw country with grit in the voice and truth in the lyrics. Hear exclusive sneak peeks, unlock hidden tracks, and meet the real Curt Colt." />
+  <title>Curt Colt | Outlaw Country</title>
+  <meta name="description" content="Curt Colt — outlaw country with grit in the voice and truth in the lyrics. Listen now, meet Curt, and discover other artists." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Curt Colt | Outlaw Country" />
+  <meta property="og:description" content="Grit in the voice. Truth in the lyrics. Listen now." />
+  <meta property="og:image" content="hero_2.png" />
+  <meta property="og:type" content="website" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- HERO -->
-  <header class="hero" style="background-image: url('hero.png');">
+  <!-- PAGE 1 / HERO -->
+  <header class="hero" id="home" aria-label="Curt Colt hero">
     <div class="hero__overlay">
-      <div class="hero__content">
+      <!-- Title on the LEFT side of hero (as requested) -->
+      <div class="hero__brand">
         <h1 class="hero__title">Curt Colt</h1>
-        <p class="hero__tagline">Outlaw country</p>
-        <p class="hero__subtag">Grit in the voice, truth in the lyrics</p>
-
-        <div class="hero__cta">
-          <button class="btn btn--primary" type="button" data-jump="#raw" data-start="audio-runnin">
-            🔥 Raw &amp; Uncut
-          </button>
-          <button class="btn btn--ghost" type="button" data-jump="#holiday" data-start="audio-christmas">
-            🎄 Holiday (Limited Time)
-          </button>
-        </div>
-
-        <p class="hero__hint">Pick a side to start listening. Unlock the second track when you’re ready.</p>
+        <p class="hero__tag">Outlaw country</p>
       </div>
+
+      <!-- Nav pills at bottom of hero -->
+      <nav class="hero__nav" aria-label="Primary navigation">
+        <a class="pill" href="#listen">Listen Now</a>
+        <a class="pill" href="#meet">Meet Curt Colt</a>
+        <a class="pill" href="#artists">Other Artists</a>
+      </nav>
     </div>
   </header>
 
+  <!-- Custom saying below hero -->
+  <section class="statement" aria-label="Curt Colt statement">
+    <div class="wrap">
+      <p class="statement__text">
+        <!-- Replace this with Curt’s real line -->
+        “Real songs don’t need permission — they just need the truth.”
+      </p>
+    </div>
+  </section>
+
+  <!-- PAGE 2 / LISTEN -->
   <main>
-    <!-- RAW & UNCUT (Progressive reveal) -->
-    <section id="raw" class="section">
-      <div class="section__head">
-        <h2 class="section__title">Raw &amp; Uncut</h2>
-        <p class="section__desc">No polish. No permission. Just the songs the way they were lived.</p>
-      </div>
+    <section class="section" id="listen">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 class="section__title">Listen Now</h2>
+          <p class="section__desc">Tap a cover to play. One track at a time — no chaos.</p>
+        </header>
 
-      <div class="cards">
-        <!-- Track 1: Runnin' For Nothing -->
-        <article class="card">
-          <div class="card__media">
-            <button class="cover-btn" type="button" data-audio="audio-runnin" aria-label="Play Runnin' For Nothing (Raw and Uncut)">
-              <img src="Curt_Performing_On_Stage.png" alt="Cover art for Runnin' For Nothing (Raw and Uncut)" />
-              <span class="cover-btn__overlay" aria-hidden="true">►</span>
+        <div class="tracks" aria-label="Curt Colt tracks">
+          <!-- NOTE: For filenames with spaces/parentheses, use URL-encoded paths for reliability on GitHub Pages. -->
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-black-mornings" aria-label="Play Black Mornings">
+              <img src="Black_Mornings.png" alt="Black Mornings cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
             </button>
-          </div>
+            <div class="track__meta">
+              <h3 class="track__title">Black Mornings</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-black-mornings" preload="metadata" playsinline>
+                <source src="Black%20Mornings.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
 
-          <div class="card__body">
-            <h3 class="card__title">Runnin' For Nothing (Raw and Uncut)</h3>
-            <p class="card__meta">Raw &amp; Uncut • Sneak peek</p>
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-bottle-up" aria-label="Play Bottle up!">
+              <img src="Bottle_Up.png" alt="Bottle up! cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">Bottle up!</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-bottle-up" preload="metadata" playsinline>
+                <source src="Bottle%20up!.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
 
-            <audio id="audio-runnin" preload="metadata" playsinline>
-              <source src="Runnin' For Nothing (Raw and Uncut).mp3" type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        </article>
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-every-inch" aria-label="Play Every Inch I Earned">
+              <img src="Every_Inch_I_Earned.png" alt="Every Inch I Earned cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">Every Inch I Earned</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-every-inch" preload="metadata" playsinline>
+                <source src="Every%20Inch%20I%20Earned.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
 
-        <!-- Hidden gem unlock -->
-        <div class="unlock">
-          <p class="unlock__text">There’s another one… but not everyone hears it.</p>
-          <button class="btn btn--secondary" type="button" id="unlock-devil">
-            Unlock a hidden track
-          </button>
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-i-chose-home" aria-label="Play I Chose Home">
+              <img src="I_Chose_Home.png" alt="I Chose Home cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">I Chose Home</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-i-chose-home" preload="metadata" playsinline>
+                <source src="I%20Chose%20Home.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-im-still-standing" aria-label="Play Im Still Standing">
+              <img src="Im_Still_Standing.png" alt="Im Still Standing cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">Im Still Standing</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-im-still-standing" preload="metadata" playsinline>
+                <source src="Im%20Still%20Standing.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-my-time" aria-label="Play My Time Is Paid">
+              <img src="My_Time_Is_Paid.png" alt="My Time Is Paid cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">My Time Is Paid</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-my-time" preload="metadata" playsinline>
+                <source src="My%20Time%20Is%20Paid.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-no-apologies" aria-label="Play No Apologies Left">
+              <img src="No_Apologies_Left.png" alt="No Apologies Left cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">No Apologies Left</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-no-apologies" preload="metadata" playsinline>
+                <source src="No%20Apologies%20Left.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-one-more" aria-label="Play One More Miracle">
+              <img src="One_More_Miracle.png" alt="One More Miracle cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">One More Miracle</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-one-more" preload="metadata" playsinline>
+                <source src="One%20More%20Miracle.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-runnin" aria-label="Play Runnin' For Nothing (Raw and Uncut)">
+              <img src="Curt_Performing_On_Stage.png" alt="Runnin' For Nothing (Raw and Uncut) cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">Runnin' For Nothing (Raw and Uncut)</h3>
+              <p class="track__sub">Raw cut</p>
+              <audio id="a-runnin" preload="metadata" playsinline>
+                <source src="Runnin'%20For%20Nothing%20(Raw%20and%20Uncut).mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-devil" aria-label="Play The Devil Made Me Do It">
+              <img src="The_Devil_Made_Me_Do_It.png" alt="The Devil Made Me Do It cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">The Devil Made Me Do It</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-devil" preload="metadata" playsinline>
+                <source src="TheDevilMadeMeDoIt.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-what-happened" aria-label="Play What Happened Last Night">
+              <img src="What_Happened_Last_Night.png" alt="What Happened Last Night cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">What Happened Last Night</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-what-happened" preload="metadata" playsinline>
+                <source src="What%20Happened%20Last%20Night.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
+          <article class="track">
+            <button class="track__cover" type="button" data-audio="a-worth-the-fight" aria-label="Play Worth the Fight">
+              <img src="Worth_The_Fight.png" alt="Worth the Fight cover art" loading="lazy" />
+              <span class="track__icon" aria-hidden="true">►</span>
+            </button>
+            <div class="track__meta">
+              <h3 class="track__title">Worth the Fight</h3>
+              <p class="track__sub">Single</p>
+              <audio id="a-worth-the-fight" preload="metadata" playsinline>
+                <source src="Worth%20the%20Fight%20(1).mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </article>
+
         </div>
-
-        <!-- Track 2: The Devil Made Me Do It (hidden until unlocked) -->
-        <article class="card card--hidden" id="devil-card" aria-hidden="true">
-          <div class="card__media">
-            <button class="cover-btn" type="button" data-audio="audio-devil" aria-label="Play The Devil Made Me Do It">
-              <img src="Raw_and_Uncut_Cover_Image.png" alt="Cover art for The Devil Made Me Do It" />
-              <span class="cover-btn__overlay" aria-hidden="true">►</span>
-            </button>
-          </div>
-
-          <div class="card__body">
-            <h3 class="card__title">The Devil Made Me Do It</h3>
-            <p class="card__meta">Raw &amp; Uncut • Hidden track</p>
-
-            <audio id="audio-devil" preload="metadata" playsinline>
-              <source src="TheDevilMadeMeDoIt.mp3" type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        </article>
       </div>
     </section>
 
-    <!-- HOLIDAY (limited-time) -->
-    <section id="holiday" class="section section--alt">
-      <div class="section__head">
-        <h2 class="section__title">Holiday (Limited Time)</h2>
-        <p class="section__desc">This stays up through <strong>January 1</strong>. After that, it’s gone.</p>
-      </div>
+    <!-- PAGE 3 / MEET CURT -->
+    <section class="section section--alt" id="meet">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 class="section__title">Meet Curt Colt</h2>
+          <p class="section__desc">Real life. Real miles. Same grit.</p>
+        </header>
 
-      <div class="cards">
-        <article class="card">
-          <div class="card__media">
-            <button class="cover-btn" type="button" data-audio="audio-christmas" aria-label="Play I'll Be Home For Christmas">
-              <img src="CurtColtChristmas.png" alt="Cover art for I'll Be Home For Christmas" />
-              <span class="cover-btn__overlay" aria-hidden="true">►</span>
-            </button>
+        <!-- Replace these placeholders with your real images + notes -->
+        <div class="gallery" aria-label="Curt Colt photos and notes">
+          <figure class="shot">
+            <div class="shot__img shot__img--placeholder" aria-hidden="true"></div>
+            <figcaption class="shot__cap">
+              <strong>Placeholder photo #1</strong><br/>
+              Add a short note that sounds like Curt — not Hallmark.
+            </figcaption>
+          </figure>
+
+          <figure class="shot">
+            <div class="shot__img shot__img--placeholder" aria-hidden="true"></div>
+            <figcaption class="shot__cap">
+              <strong>Placeholder photo #2</strong><br/>
+              One line. Punchy. Honest.
+            </figcaption>
+          </figure>
+
+          <figure class="shot">
+            <div class="shot__img shot__img--placeholder" aria-hidden="true"></div>
+            <figcaption class="shot__cap">
+              <strong>Placeholder photo #3</strong><br/>
+              Keep it human. Keep it true.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4 / OTHER ARTISTS -->
+    <section class="section" id="artists">
+      <div class="wrap">
+        <header class="section__head">
+          <h2 class="section__title">Other Artists</h2>
+          <p class="section__desc">Different world. Same craft.</p>
+        </header>
+
+        <a class="feature" href="https://shermatex.github.io/Kaeldon/" target="_blank" rel="noopener noreferrer" aria-label="Go to Kaeldon website">
+          <div class="feature__media" role="img" aria-label="Kaeldon artwork"></div>
+          <div class="feature__body">
+            <h3 class="feature__title">KÆLDØN</h3>
+            <p class="feature__desc">Enter the Kaeldon world — cinematic, mythic, and built for the quiet hours.</p>
+            <span class="feature__cta">Visit Kaeldon →</span>
           </div>
-
-          <div class="card__body">
-            <h3 class="card__title">I'll Be Home For Christmas</h3>
-            <p class="card__meta">Limited-time release • Sneak peek</p>
-
-            <audio id="audio-christmas" preload="metadata" playsinline>
-              <source src="IllBeHomeForChristmas.mp3" type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        </article>
+        </a>
       </div>
-    </section>
-
-    <!-- THE REAL CURT COLT -->
-    <section id="real" class="section">
-      <div class="section__head">
-        <h2 class="section__title">The Real Curt Colt</h2>
-        <p class="section__desc">A real man. Real life. Same grit.</p>
-      </div>
-
-      <div class="real-grid">
-        <figure class="real-card">
-          <img src="Curt_On_Horse.png" alt="Curt Colt on a horse" />
-          <figcaption>On the horse — where the mind gets quiet.</figcaption>
-        </figure>
-
-        <figure class="real-card">
-          <img src="Curt_And_Pup.png" alt="Curt Colt with his dog" />
-          <figcaption>With the pup — loyalty doesn’t need words.</figcaption>
-        </figure>
-
-        <figure class="real-card">
-          <img src="Curt_Family_Man.png" alt="Curt Colt with his family" />
-          <figcaption>Family man — everything else comes second.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- EMAIL CAPTURE (shows after engagement) -->
-    <section class="section section--alt" id="insider" hidden>
-      <div class="section__head">
-        <h2 class="section__title">Unreleased tracks</h2>
-        <p class="section__desc">Want unreleased Curt tracks before they drop? No spam. Just music.</p>
-      </div>
-
-      <!-- NOTE: This is a placeholder form. Replace action="" with your provider (Mailchimp, ConvertKit, etc.). -->
-      <form class="email" action="" method="post">
-        <label class="sr-only" for="email">Email address</label>
-        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required />
-        <button class="btn btn--primary" type="submit">Get early access</button>
-      </form>
-
-      <p class="email__fineprint">We’ll only email when there’s something worth hearing.</p>
-    </section>
-
-    <!-- CONNECT (Kaeldon-style buttons across) -->
-    <section class="section">
-      <div class="section__head">
-        <h2 class="section__title">Connect</h2>
-        <p class="section__desc">Follow Curt Colt where you listen and hang out.</p>
-      </div>
-
-      <ul class="social-buttons">
-        <li><a href="https://www.instagram.com/colt_curt/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        <li><a href="https://www.facebook.com/profile.php?id=61584598382214" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-        <li><a href="https://open.spotify.com/search/Curt%20Colt" target="_blank" rel="noopener noreferrer">Spotify</a></li>
-        <li><a href="https://music.apple.com/us/search?term=curt%20colt" target="_blank" rel="noopener noreferrer">Apple Music</a></li>
-        <li><a href="https://music.amazon.com/search/Curt+Colt?filter=IsLibrary%7Cfalse&sc=none" target="_blank" rel="noopener noreferrer">Amazon Music</a></li>
-      </ul>
     </section>
   </main>
 
-  <footer class="footer">
-    <p>&copy; 2025 Curt Colt. All rights reserved.</p>
+  <!-- Footer socials (requested “bottom of page radio buttons”) -->
+  <footer class="footer" aria-label="Curt Colt links">
+    <div class="wrap footer__inner">
+      <nav class="social" aria-label="Social links">
+        <a class="pill pill--soft" href="https://www.instagram.com/colt_curt/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="pill pill--soft" href="https://www.facebook.com/profile.php?id=61584598382214" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a class="pill pill--soft" href="https://open.spotify.com/search/Curt%20Colt" target="_blank" rel="noopener noreferrer">Spotify</a>
+        <a class="pill pill--soft" href="https://music.apple.com/us/search?term=curt%20colt" target="_blank" rel="noopener noreferrer">Apple Music</a>
+        <a class="pill pill--soft" href="https://music.amazon.com/search/Curt+Colt?filter=IsLibrary%7Cfalse&sc=none" target="_blank" rel="noopener noreferrer">Amazon Music</a>
+      </nav>
+
+      <p class="footer__fineprint">© 2025 Curt Colt</p>
+    </div>
   </footer>
 
   <script>
     (function () {
-      const allAudios = Array.from(document.querySelectorAll('audio'));
-      const coverButtons = Array.from(document.querySelectorAll('.cover-btn'));
-      const heroButtons = Array.from(document.querySelectorAll('[data-jump]'));
-      const insiderSection = document.getElementById('insider');
+      const audios = Array.from(document.querySelectorAll("audio"));
+      const buttons = Array.from(document.querySelectorAll("[data-audio]"));
 
-      const unlockBtn = document.getElementById('unlock-devil');
-      const devilCard = document.getElementById('devil-card');
-
-      let hasEngaged = false;
-
-      function pauseAllExcept(active) {
-        allAudios.forEach(a => {
-          if (a !== active) a.pause();
-        });
-      }
-
-      function getAudioById(id) {
+      function getAudio(id) {
         return document.getElementById(id);
       }
 
-      function showInsiderIfNeeded() {
-        if (hasEngaged && insiderSection && insiderSection.hasAttribute('hidden')) {
-          insiderSection.removeAttribute('hidden');
-        }
+      function pauseAllExcept(active) {
+        audios.forEach(a => { if (a !== active) a.pause(); });
       }
 
-      function syncCoverUI() {
-        coverButtons.forEach(btn => {
-          const overlay = btn.querySelector('.cover-btn__overlay');
-          const audioId = btn.getAttribute('data-audio');
-          const audio = getAudioById(audioId);
-          if (!overlay || !audio) return;
-
-          const playing = !audio.paused;
-          overlay.textContent = playing ? '❚❚' : '►';
-          btn.setAttribute('aria-label', playing ? 'Pause preview' : 'Play preview');
-          btn.setAttribute('title', playing ? 'Pause preview' : 'Play preview');
+      function syncUI() {
+        buttons.forEach(btn => {
+          const id = btn.getAttribute("data-audio");
+          const a = getAudio(id);
+          const icon = btn.querySelector(".track__icon");
+          if (!a || !icon) return;
+          icon.textContent = a.paused ? "►" : "❚❚";
+          btn.setAttribute("aria-label", a.paused ? "Play" : "Pause");
         });
       }
 
-      async function toggleAudio(audio) {
+      async function toggle(a) {
         try {
-          if (audio.paused) {
-            pauseAllExcept(audio);
-            await audio.play();
+          if (a.paused) {
+            pauseAllExcept(a);
+            await a.play();
           } else {
-            audio.pause();
+            a.pause();
           }
         } catch (e) {
-          console.warn('Audio playback failed:', e);
+          console.warn("Playback blocked:", e);
         } finally {
-          syncCoverUI();
+          syncUI();
         }
       }
 
-      // Hero buttons: jump + start track
-      heroButtons.forEach(btn => {
-        btn.addEventListener('click', async () => {
-          const jump = btn.getAttribute('data-jump');
-          const startId = btn.getAttribute('data-start');
+      buttons.forEach(btn => {
+        const id = btn.getAttribute("data-audio");
+        const a = getAudio(id);
+        if (!a) return;
 
-          if (jump) {
-            document.querySelector(jump)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+        btn.addEventListener("click", () => toggle(a));
+        a.addEventListener("play", syncUI);
+        a.addEventListener("pause", syncUI);
+        a.addEventListener("ended", syncUI);
+      });
 
-          if (startId) {
-            const audio = getAudioById(startId);
-            if (audio) {
-              hasEngaged = true;
-              showInsiderIfNeeded();
-              await toggleAudio(audio);
-            }
-          }
+      // Smooth anchor scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener("click", (e) => {
+          const target = document.querySelector(a.getAttribute("href"));
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
 
-      // Cover buttons
-      coverButtons.forEach(btn => {
-        const audioId = btn.getAttribute('data-audio');
-        const audio = getAudioById(audioId);
-        if (!audio) return;
-
-        btn.addEventListener('click', async () => {
-          hasEngaged = true;
-          showInsiderIfNeeded();
-          await toggleAudio(audio);
-        });
-
-        audio.addEventListener('play', () => {
-          hasEngaged = true;
-          showInsiderIfNeeded();
-          syncCoverUI();
-        });
-        audio.addEventListener('pause', syncCoverUI);
-        audio.addEventListener('ended', syncCoverUI);
-      });
-
-      // Unlock hidden track
-      if (unlockBtn && devilCard) {
-        unlockBtn.addEventListener('click', () => {
-          devilCard.classList.remove('card--hidden');
-          devilCard.removeAttribute('aria-hidden');
-          unlockBtn.disabled = true;
-          unlockBtn.textContent = 'Hidden track unlocked';
-          hasEngaged = true;
-          showInsiderIfNeeded();
-
-          devilCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-      }
-
-      syncCoverUI();
+      syncUI();
     })();
   </script>
 </body>
