@@ -133,6 +133,7 @@ a:hover{ text-decoration: underline; }
   background: rgba(255,255,255,0.14);
   border-color: rgba(255,255,255,0.40);
   transform: translateY(-1px);
+  text-decoration: none;
 }
 
 .pill:active{ transform: translateY(0px); }
@@ -282,7 +283,7 @@ audio{
 }
 
 /* =========================
-   Meet Curt Colt (FIXED: heads protected)
+   Meet Curt Colt (heads protected)
 ========================= */
 
 .meet{
@@ -294,7 +295,6 @@ audio{
   align-items: stretch;
 }
 
-/* Desktop: consistent card height, but crop anchored UP so heads stay */
 .meet__card{
   margin: 0;
   background: var(--card);
@@ -306,21 +306,15 @@ audio{
   grid-template-rows: auto 1fr;
 }
 
-/*
-  Key fix:
-  - Keep a consistent visual height using aspect-ratio (better than hard px height)
-  - Crop with object-fit: cover BUT anchor near the top
-*/
+/* Consistent desktop row without decapitating people */
 .meet__card img{
   width: 100%;
-  aspect-ratio: 4 / 3;      /* consistent row look without brutal cropping */
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  object-position: 50% 18%; /* protect heads/eyes area */
+  object-position: 50% 18%;
 }
 
-/* Optional per-image overrides if needed:
-   Add class to the FIGURE: meet__card--top / --center / --low
-*/
+/* Optional per-image overrides */
 .meet__card--top img{ object-position: 50% 10%; }
 .meet__card--center img{ object-position: 50% 50%; }
 .meet__card--low img{ object-position: 50% 70%; }
@@ -423,6 +417,66 @@ audio{
   font-weight: 800;
   letter-spacing: 0.2px;
   color: rgba(255,255,255,0.92);
+}
+
+/* =========================
+   Connect Buttons (THIS is what you were missing)
+========================= */
+
+.social-buttons{
+  max-width: var(--max);
+  margin: 1.25rem auto 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.social-buttons li{ margin: 0; }
+
+.social-buttons a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 170px;
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: 0.25px;
+
+  color: var(--text);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+
+  transition: transform 120ms ease, background 160ms ease, border-color 160ms ease, filter 160ms ease;
+}
+
+.social-buttons a:hover{
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.social-buttons a:active{
+  transform: translateY(0px);
+}
+
+.social-buttons a:focus-visible{
+  outline: 3px solid rgba(255,138,31,0.55);
+  outline-offset: 3px;
+}
+
+/* Make buttons fit better on very small screens */
+@media (max-width: 420px){
+  .social-buttons a{
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 /* =========================
